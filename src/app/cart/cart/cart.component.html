@@ -1,0 +1,106 @@
+<div *ngIf="cart.length > 0" class="container">
+  <mat-card class="mat-elevation-z8" style="padding-bottom: 1em;">
+    <div fxLayout="row" fxLayoutGap="auto">
+      <span>
+        <mat-card-title style="padding-bottom: 1em; padding-top: 10px;"
+          >My Cart
+        </mat-card-title>
+      </span>
+      <span>
+        <a routerLink="/products" routerLinkActive="active">
+          <button mat-button>
+            <mat-icon>arrow_back_ios</mat-icon>
+            <mat-icon>shopping_cart</mat-icon> Continue Shopping
+          </button>
+        </a>
+      </span>
+    </div>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef>Item</th>
+        <td mat-cell style="width: 140px;" *matCellDef="let cart">
+          <img src="{{ cart.imgUrl }}" class="products-listing-image" />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td
+          mat-cell
+          style="text-align: left; width: 300px;"
+          *matCellDef="let cart"
+        >
+          <span style="font-weight: 500; font-size: large;"
+            >{{ cart.name }}
+          </span>
+          <div style="padding-top: 5px; font-size: medium; font-weight: 500;">
+            Price: &nbsp;{{ cart.price | currency: "&#8377;" }}
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let cart">
+          {{ cart.price | currency: "&#8377;" }}
+        </td>
+      </ng-container> -->
+
+      <ng-container matColumnDef="qty">
+        <th mat-header-cell style="text-align: center;" *matHeaderCellDef>
+          Quantity
+        </th>
+        <td mat-cell style="text-align: center;" *matCellDef="let cart">
+          <button mat-icon-button (click)="decrease(cart)">
+            <mat-icon>remove_circle_outline</mat-icon>
+          </button>
+
+          <strong>{{ cart.quantity }}</strong>
+
+          <button
+            *ngIf="cart.quantity < 10"
+            mat-icon-button
+            (click)="increase(cart)"
+          >
+            <mat-icon>add_circle_outline</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="itemTotal">
+        <th mat-header-cell *matHeaderCellDef>Item Total</th>
+        <td mat-cell *matCellDef="let cart">
+          <span style="font-size: medium; font-weight: 500;">
+            {{ cart.itemTotal | currency: "&#8377;" }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell style="text-align: right;" *matHeaderCellDef>
+          <button mat-button (click)="clear()" color="warn">
+            <mat-icon>delete_forever</mat-icon>
+            Clear Cart
+          </button>
+        </th>
+        <td mat-cell style="text-align: right;" *matCellDef="let cart">
+          <button mat-button (click)="wishlist(cart)">
+            <mat-icon style="color: blue;">bookmarks</mat-icon>&nbsp; Buy Later
+          </button>
+          <br />
+          <button mat-button (click)="remove(cart)">
+            <mat-icon style="color: red;">clear</mat-icon>&nbsp; &nbsp;Remove
+          </button>
+        </td>
+        <td mat-footer-cell style="text-align: right;" *matFooterCellDef>
+          <button mat-raised-button class="btn-size" color="primary">
+            Proceed to Checkout
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card>
+</div>

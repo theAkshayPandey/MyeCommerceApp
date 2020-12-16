@@ -1,0 +1,16 @@
+.button-style {
+    margin-left: 8px;
+    margin-right: 8px;
+    color: whitesmoke;
+}
+.example-fill-remaining-space{
+    flex: 1 1 auto;
+    
+}
+
+.login-space{
+    width:150px
+}
+.loggedin-space{
+    width: 100px;
+}

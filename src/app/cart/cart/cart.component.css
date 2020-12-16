@@ -1,0 +1,31 @@
+@media all and (max-width: 699 px) {
+  .products-listing-image {
+    height: 9em;
+    width: 7em;
+  }
+}
+
+.products-listing-image {
+  height: 10em;
+  width: 7em;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.empty-cart {
+  width: 500px;
+  height: 300px;
+  margin: 10% auto;
+  text-align: center;
+  background-color: white;
+}
+.cart-div {
+  text-align: center;
+  padding: 2em;
+}
+.btn-size {
+  width: 200px;
+  height: 50px;
+}

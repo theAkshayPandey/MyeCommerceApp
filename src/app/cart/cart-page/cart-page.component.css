@@ -1,0 +1,32 @@
+.empty-cart {
+  width: 500px;
+  height: 300px;
+  margin: 10% auto;
+  text-align: center;
+  background-color: white;
+}
+.cart-div {
+  text-align: center;
+  padding: 2em;
+}
+.spacing {
+  margin-top: 50px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+.cart-items {
+  width: 1050px;
+  padding: 1em;
+}
+.order-div {
+  width: 350px;
+  height: 400px;
+  padding: 1em;
+}
+.btn-size {
+  width: 250px;
+  height: 50px;
+  font-size: large;
+  color: white;
+  background-color: #9933ff;
+}

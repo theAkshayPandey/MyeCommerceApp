@@ -1,0 +1,93 @@
+<div>
+  <div *ngIf="cart.length === 0">
+    <mat-card class="empty-cart mat-elevation-z8">
+      <mat-card-title>
+        Your Cart is Empty ...!!!
+      </mat-card-title>
+      <mat-card-content>
+        <div class="cart-div">
+          <img
+            src="../../../assets/empty-cart.png"
+            alt="empty-cart"
+            width="250"
+            height="150"
+          />
+          <br />
+          <br /><br />
+          <a routerLink="/products" routerLinkActive="active">
+            <button class="btn-size" mat-raised-button color="primary">
+              <mat-icon>shopping_cart</mat-icon> &nbsp; SHOP NOW
+            </button>
+          </a>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div
+    *ngIf="cart.length > 0"
+    fxLayout="row"
+    fxLayoutGap="10px"
+    class="spacing"
+  >
+    <span class="cart-items">
+      <app-cart></app-cart>
+    </span>
+    <span class="order-div">
+      <mat-card class="mat-elevation-z8">
+        <div style="text-align: center;">
+          <mat-card-title style="padding-bottom: 2em;">
+            Order Summary:
+          </mat-card-title>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutGap="auto"
+          style="padding-bottom: 2em; font-size: large;"
+        >
+          <span>Total Items :</span>
+          <span>
+            <strong>{{ cart.length }}</strong>
+          </span>
+        </div>
+        <div fxLayout="row" fxLayoutGap="auto" style="font-size: large;">
+          <span>Item Total : </span>
+          <span
+            ><strong>{{ totalPrice | currency: "&#8377;" }}</strong></span
+          >
+        </div>
+        <br />
+        <div
+          fxLayout="row"
+          fxLayoutGap="auto"
+          style="padding-bottom: 8px; font-size: medium;"
+        >
+          <span>Shipping Charge : </span>
+          <span>+ {{ ShippingPrice | currency: "&#8377;" }}</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div
+          fxLayout="row"
+          fxLayoutGap="auto"
+          style="padding-bottom: 2em; font-size: large; padding-top: 1.5em;"
+        >
+          <span>Total Price :</span>
+          <span>
+            <strong>{{ total | currency: "&#8377;" }}</strong>
+          </span>
+        </div>
+        <div style="padding-bottom: 10px; text-align: center;">
+          <a routerLink="/orders" routerLinkActive="active">
+            <button
+              mat-raised-button
+              (click)="placeOrder(cart)"
+              class="btn-size"
+            >
+              Place Order
+            </button>
+          </a>
+        </div>
+      </mat-card>
+    </span>
+  </div>
+</div>

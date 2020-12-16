@@ -1,0 +1,48 @@
+<div class="example-container">
+  <mat-toolbar class="mat-elevation-z8" color="primary">
+    <span>
+      <a routerLink="/" routerLinkActive="active">
+        <button mat-button class="button-style">Shopping Kart</button>
+      </a>
+      <a routerLink="/products" routerLinkActive="active">
+        <button mat-button class="button-style">Products</button>
+      </a>
+    </span>
+    <span class="example-fill-remaining-space"></span>
+    <span>
+      <a routerLink="/cart">
+        <button mat-button class="button-style">
+          <mat-icon class="material-icons md-dark">shopping_cart</mat-icon>
+          <span
+            matBadge="{{ cart.length }}"
+            matBadgeOverlap="true"
+            *ngIf="cart.length > 0"
+          >
+          </span>
+          &nbsp; Cart
+        </button>
+      </a>
+      <span *ngIf="!user">
+        <a routerLink="/auth" routerLinkActive="active">
+          <button mat-button class="button-style">
+            <mat-icon>login</mat-icon> &nbsp;Login
+          </button></a
+        >
+      </span>
+
+      <span *ngIf="user">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon class="material-icons md-dark">face</mat-icon>
+          {{ user.name }}
+        </button>
+        <mat-menu #menu="matMenu">
+          <a routerLink="/login" (click)="logout()">
+            <button mat-menu-item>Logout</button></a
+          >
+        </mat-menu>
+      </span>
+    </span>
+  </mat-toolbar>
+</div>
+
+<router-outlet></router-outlet>

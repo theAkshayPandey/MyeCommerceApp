@@ -1,0 +1,94 @@
+<div>
+  <mat-card class="mat-elevation-z8" class="layout">
+    <mat-card-title>
+      Order History..
+    </mat-card-title>
+<mat-card-content>
+  <header class="clearfix">
+    <div id="logo">
+      <img src="logo.png">
+    </div>
+    <div id="company">
+      <h2 class="name">Company Name</h2>
+      <div>455 Foggy Heights, AZ 85004, US</div>
+      <div>(602) 519-0450</div>
+      <div><a href="mailto:company@example.com">company@example.com</a></div>
+    </div>
+  </header>
+  <main>
+    <div id="details" class="clearfix">
+      <div id="client">
+        <div class="to">INVOICE TO:</div>
+        <h2 class="name">John Doe</h2>
+        <div class="address">796 Silver Harbour, TX 79273, US</div>
+        <div class="email"><a href="mailto:john@example.com">john@example.com</a></div>
+      </div>
+      <div id="invoice">
+        <h1>INVOICE 3-2-1</h1>
+        <div class="date">Date of Invoice: 01/06/2014</div>
+        <div class="date">Due Date: 30/06/2014</div>
+      </div>
+    </div>
+    <div>
+      <table mat-table [dataSource]="dataSource" style="width: 100%;">
+        <tbody>
+        <ng-container matColumnDef="orderNo">
+          <th mat-header-cell *matHeaderCellDef>Order No.</th>
+          <td mat-cell *matCellDef="let order"></td>
+        </ng-container>
+      
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let order"></td>
+        </ng-container>
+      
+        <ng-container matColumnDef="item">
+          <th mat-header-cell *matHeaderCellDef>Products</th>
+          <td mat-cell *matCellDef="let order"></td>
+        </ng-container>
+      
+        <ng-container matColumnDef="qty">
+          <th mat-header-cell *matHeaderCellDef>Quantity</th>
+          <td mat-cell *matCellDef="let order">{{ order.length }}</td>
+        </ng-container>
+      
+        <ng-container matColumnDef="totalPrice">
+          <th mat-header-cell *matHeaderCellDef>Cart Total</th>
+          <td mat-cell *matCellDef="let order"></td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">SUBTOTAL</td>
+            <td>$5,200.00</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">TAX 25%</td>
+            <td>$1,300.00</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">GRAND TOTAL</td>
+            <td>$6,500.00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <table>
+      
+    </table>
+    <div id="thanks">Thank you!</div>
+
+  </main>
+  <footer>
+    Invoice was created on a computer and is valid without the signature and seal.
+  </footer>
+</mat-card-content>
+   
+  </mat-card>
+</div>
